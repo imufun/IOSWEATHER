@@ -68,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="83" id="sg8-NU-fBt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WeatherCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="83" id="sg8-NU-fBt">
                                         <rect key="frame" x="0.0" y="28" width="414" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sg8-NU-fBt" id="Do0-kM-bZn">
@@ -120,6 +120,7 @@
                     <connections>
                         <outlet property="CityLabel" destination="d7t-T1-IKq" id="mBt-wj-PZZ"/>
                         <outlet property="TempLabel" destination="1kD-ha-QgP" id="tfX-uX-HeL"/>
+                        <outlet property="tableView" destination="9O7-qK-xdJ" id="MmX-5F-jha"/>
                         <outlet property="weatheTypeLabel" destination="NSv-wQ-ssi" id="NOe-Hi-MIN"/>
                         <outlet property="weatherdes" destination="lxK-RV-yxc" id="PlY-vc-lfr"/>
                     </connections>

@@ -11,12 +11,48 @@ import Alamofire
 
 class Weather{
     
-    var city : String
+    var city : String!
+    var _date : String!
+    var weatherType : String!
+    var currentWeatherTemp : Double!
     
-    
-    init(city: String) {
-        self.city = city
+    var cityName: String {
+        if city == nil {
+            city = ""
+        }
+        return city
     }
+    
+    var WeatherDate : String {
+        
+        if _date == nil {
+            _date = ""
+        }
+        
+        let dateFormatter  = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        let currentDate = dateFormatter.string(from: Date())
+        self._date = "Today, \(currentDate)"
+        return _date
+    }
+    
+    var WeatherConType : String {
+        if weatherType == nil {
+            weatherType = ""
+        }
+        
+        return weatherType
+    }
+    
+    var currentTeprature : Double {
+        if currentWeatherTemp == nil {
+            currentWeatherTemp = 0.0
+        }
+        
+        return currentWeatherTemp
+    }
+    
     
 //    
 //    func getWeatherData(){

@@ -8,8 +8,9 @@
 
 import UIKit
 import Alamofire
-class ViewController: UIViewController {
+class ViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     
     let url  = URL(string: API)!
     @IBOutlet weak var CityLabel: UILabel!
@@ -30,6 +31,10 @@ class ViewController: UIViewController {
     //  var weather = Weatherity()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
         
         self.getWeatherData()
         // weather.getWeatherData()
@@ -38,9 +43,30 @@ class ViewController: UIViewController {
         
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath)
+        
+        return cell
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     func getWeatherData(){
- 
+        
         Alamofire.request(url).responseJSON { response in
             let result = response.result
             
@@ -49,15 +75,15 @@ class ViewController: UIViewController {
                 // City
                 if let name = dict["name"] as? String {
                     self.city = name
-self.CityLabel.text = self.city
+                    self.CityLabel.text = self.city
                     print(self.city)
                 }
                 // station
-              
+                
                 if let station = dict["base"] as? String {
                     
                     self.station = station
-                  //  self.stationLabel.text = self.station
+                    //  self.stationLabel.text = self.station
                     print(self.station)
                 }
                 
@@ -75,9 +101,9 @@ self.CityLabel.text = self.city
                         self.WeatherImage = img
                         
                     }
-//                    if let description = dict["description"] as? [Dictionary<String, Any>]{
-//                        if let
-//                    }
+                    //                    if let description = dict["description"] as? [Dictionary<String, Any>]{
+                    //                        if let
+                    //                    }
                 }
                 
                 
@@ -85,7 +111,7 @@ self.CityLabel.text = self.city
                     if let temp = main["temp"] as? Double{
                         self.temprature = temp - 273.15
                         self.TempLabel.text = String(format: "%.0f", self.temprature)
-                     }
+                    }
                 }
                 
             }
@@ -95,11 +121,11 @@ self.CityLabel.text = self.city
     }
     func UpdateWeaher(){
         
-       // let url  = URL(string: API)!
+        // let url  = URL(string: API)!
         //CityLabel.text = weather.city
-//       Alamofire.request(url, method: .post, parameters: Parameters, encoding: JSONEncoding.default, headers: nil){
-//           response in
-//        }
+        //       Alamofire.request(url, method: .post, parameters: Parameters, encoding: JSONEncoding.default, headers: nil){
+        //           response in
+        //        }
         
     }
 }
